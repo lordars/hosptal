@@ -12,7 +12,7 @@ public class ConexaoJPA
 
 {
     public static EntityManager getEntityManager() 
-    {EntityManagerFactory emf= Persistence.createEntityManagerFactory("JHospitalPu");
+    {EntityManagerFactory emf = Persistence.createEntityManagerFactory("JHospitalPU");
     EntityManager em = emf.createEntityManager();
     return em;
     }

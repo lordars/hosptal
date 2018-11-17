@@ -1,6 +1,8 @@
 
 package View.cadastro;
 
+import Controller.PacienteController;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
 public class CadastroDePacienteView extends javax.swing.JPanel {
@@ -56,6 +58,12 @@ private JTabbedPane tabbedPane;
 
         jLabel9.setText("Plano de Saude");
 
+        textFieldDiasDeInternado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldDiasDeInternadoActionPerformed(evt);
+            }
+        });
+
         comboBoxPlanoDeSaude.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sim", "nao" }));
         comboBoxPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,8 +72,18 @@ private JTabbedPane tabbedPane;
         });
 
         buttonSalvar.setText("Salvar");
+        buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalvarActionPerformed(evt);
+            }
+        });
 
         buttonCancelar.setText("Cancelar");
+        buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -164,7 +182,51 @@ private JTabbedPane tabbedPane;
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxPlanoDeSaudeActionPerformed
 
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
+       
+        if (JOptionPane.showConfirmDialog(this,"Desea salir sin salvar los datos?","confirmação",JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION) 
+        {
+            tabbedPane.remove(this);
+            tabbedPane.validate();
+            tabbedPane.repaint();
+        }
+        
+    }//GEN-LAST:event_buttonCancelarActionPerformed
 
+    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
+if (textFieldNome != null && !textFieldNome.getText().equals("")&& textFieldEmail != null && !textFieldEmail.getText().equals("") && textFieldEndereco != null && !textFieldEndereco.getText().equals ("") && textFieldDoenca != null && !textFieldDoenca.getText().equals("") ) 
+{PacienteController pc = new PacienteController();
+try 
+{
+pc.inserir(textFieldNome.getText(),textFieldEmail.getText(),textFieldEndereco.getText(),textFieldTelefone.getText(),textFieldQuarto.getText(),textFieldDoenca.getText(),textFieldDiasDeInternado.getText(),(String)comboBoxPlanoDeSaude.getSelectedItem());
+JOptionPane.showMessageDialog(this,"Contato salvo com susceso!","sucesso",JOptionPane.INFORMATION_MESSAGE);
+limparDados();
+}
+catch (Exception e)
+{
+    JOptionPane.showMessageDialog(this,"não foi posivel salvar","error",JOptionPane.ERROR_MESSAGE);
+    
+}
+}else
+{
+JOptionPane.showMessageDialog(this,"O NOME, EMAIL, ENDEREÇO E DOENÇA DO" +  "PACIENTE SÃO CAMPOS OBLIGATORIOS!","ERROR", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_buttonSalvarActionPerformed
+    }
+    private void textFieldDiasDeInternadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDiasDeInternadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldDiasDeInternadoActionPerformed
+    
+private void limparDados( )
+        {
+            textFieldNome.setText("");
+            textFieldEmail.setText("");
+            textFieldEndereco.setText("");
+            textFieldTelefone.setText("");
+            textFieldQuarto.setText("");
+            textFieldDoenca.setText("");
+            textFieldDiasDeInternado.setText("");
+            comboBoxPlanoDeSaude.setSelectedItem(0);
+        }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonSalvar;

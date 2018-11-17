@@ -22,17 +22,16 @@ import javax.persistence.criteria.Root;
  * @author lordars
  */
 public class PacienteDAO implements Serializable {
-    public EntityManager getEntityManager() {return  ConexaoJPA.getEntityManager();
+   // public EntityManager getEntityManager() {return  ConexaoJPA.getEntityManager();
 
-//    public PacienteDAO(EntityManagerFactory emf) {
+//    public PacienteDAO (EntityManagerFactory emf) {
 //        this.emf = emf;
 //    }
 //    private EntityManagerFactory emf = null;
-//
-//    public EntityManager getEntityManager() {
-//        return emf.createEntityManager();
-//    }
-    }
+
+    public EntityManager getEntityManager() {
+        return ConexaoJPA.getEntityManager();
+        }
     public void create(Paciente paciente) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {

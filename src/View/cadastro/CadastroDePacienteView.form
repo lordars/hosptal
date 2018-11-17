@@ -187,6 +187,9 @@
     <Component class="javax.swing.JTextField" name="textFieldQuarto">
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldDiasDeInternado">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldDiasDeInternadoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldTelefone">
     </Component>
@@ -212,11 +215,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSalvarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonCancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
